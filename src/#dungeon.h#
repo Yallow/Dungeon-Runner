@@ -16,18 +16,6 @@ enum move {
   MOVE_UP,
   MOVE_DOWN
 };
-
-// dungeon room names
-enum dr_names {
-    kitchen,
-    dungeon,
-    attic,
-    boiler,
-    livingroom,
-    garage,
-    bedroom
-};
-
 // a bag structure for holding items
 typedef struct bag {
   char *items[MAX_BAG];
@@ -67,14 +55,12 @@ typedef struct item {
 } item;
 
 
-// create a new dungeon (links together dungeon rooms)
-void create_dungeon(char *dungeon_room);
 // function to create a new player
 player create_player(char *name, int health_points, int strength);
 // create a new enemy
-enemy *create_enemy(char *name);
+enemy create_enemy(char *name, int health_points, int strength);
 // create new rooms
-room *create_room(char *room_name);
+room create_room(char *room_name, enemy *enemy);
 // create a new bag
 bag create_bag();
 // move the player (up, down, left, right)
