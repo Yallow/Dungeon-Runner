@@ -5,7 +5,6 @@
 #include "dungeon.h"
 #include "../dbg/dbg.h"
 
-#define DUNGEONROOMS 4
 
 // create a new dungeon room
 room *create_room(char *room_name)
@@ -31,21 +30,19 @@ room *create_room(char *room_name)
 // destroy a dungeon room
 void destroy_room(room *room)
 {
+    // free any links that the room has made
+  free(room->room_up);
+  free(room->room_down);
+  free(room->room_right);
+  free(room->room_left);
+  free(room->enemy);
   free(room);
-}
-
-int main(int argc, char *argv[])
-{
-  room  *test_room = create_room("Test Room");
-
-  return 0;
 }
 
 // create the actualy dungeon
 void create_dungeon(char *dungeon_name)
 {
-    int i;
-
+    printf("Welcome to: %s\n", dungeon_name);
     // create a linked list of dungeon rooms
     // create the starting area
     room *start = create_room("Starting Zone");
@@ -88,5 +85,34 @@ void create_dungeon(char *dungeon_name)
     bedroom->room_level = 3;
     bedroom->enemy->health_points = (bedroom->room_level * 2);
 
+    // setup room links (doors)
+    start->room_up = attic;
+    start->room_down = boiler;
+    start->room_right = kitchen;
 
+    attic->room_down = start;
+
+    boiler->room_up = start;
+    boiler->room_right = dungeon;
+
+    kitchen->room_left = start;
+    kitchen->room_right = living_room;
+    kitchen->room_down = garage;
+
+    dungeon->room_left = boiler;
+
+    living_room->room_left = kitchen;
+    living_room->room_right = bedroom;
+
+    garage->room_up = kitchen;
+
+    bedroom->room_left = living_room;
+
+}
+
+int main()
+{
+    printf("WE MADE IT");
+
+    return 0;
 }
