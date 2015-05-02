@@ -84,7 +84,7 @@ void fight(player *player, enemy *enemy);
 // create a new item to attach to an enemy
 item *create_item(char *item_name);
 // loot item for the enemy (destroys the item on the enemy and recreates the item)
-item loot_item(char *item_name);
+item *loot_item(char *item_name);
 // destroy player
 void destroy_player(player *player);
 // destroy enemy

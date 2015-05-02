@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#inlcude "../dbg/dbg.h"
-#inlcude "dungeon.h"
+#include "../dbg/dbg.h"
+#include "dungeon.h"
 
 item *create_item(char *item_name)
 {
