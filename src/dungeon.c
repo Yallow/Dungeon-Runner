@@ -14,10 +14,11 @@ room *create_room(char *room_name)
 
   // gather info for this room's enemy
   size_t n_bytes = 200; // initial allocation for stdin in this function
-  char *enemy_name;
+  char enemy_name[n_bytes];
 
-  printf("What dwells in this room?: ");
-  getline(&enemy_name, &n_bytes, stdin);
+  printf("What dwells in the %s?: ", room_name);
+  fgets(enemy_name, n_bytes, stdin);
+  printf("%s dwells in the %s\n", enemy_name, room_name);
       // create a new enemy for this room
   enemy *new_enemy = create_enemy(enemy_name);
 
@@ -108,11 +109,4 @@ void create_dungeon(char *dungeon_name)
 
     bedroom->room_left = living_room;
 
-}
-
-int main()
-{
-    printf("WE MADE IT");
-
-    return 0;
 }

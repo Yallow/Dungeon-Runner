@@ -3,11 +3,13 @@
 #include "../dbg/dbg.h"
 #include "dungeon.h"
 
-item *create_item(char *item_name)
+item *create_item(char *item_name, char *item_type, int item_stats)
 {
   item *new_item = calloc(1, sizeof(item));
-  // name the item
+  // add characteristics to the new item
   new_item->item_name = item_name;
+  new_item->item_type = item_type;
+  new_item->item_stats = item_stats;
 
   return new_item;
 }
