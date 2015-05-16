@@ -40,8 +40,8 @@ void destroy_room(room *room)
   free(room);
 }
 
-// create the actualy dungeon
-void create_dungeon(char *dungeon_name)
+// create the actual dungeon and return the address of the starting location
+room *create_dungeon(char *dungeon_name)
 {
     printf("Welcome to: %s\n", dungeon_name);
     // create a linked list of dungeon rooms
@@ -67,9 +67,9 @@ void create_dungeon(char *dungeon_name)
 
     // teir 2 rooms
     // create the dungeon - many rooms will spawn off of this in the future
-    room *dungeon = create_room("Dungeon");
-    dungeon->room_level = 2;
-    dungeon->enemy->health_points = (dungeon->room_level * 2);
+    room *dungeon_r = create_room("Dungeon");
+    dungeon_r->room_level = 2;
+    dungeon_r->enemy->health_points = (dungeon_r->room_level * 2);
 
     // create the living room
     room *living_room = create_room("Living Room");
@@ -94,13 +94,13 @@ void create_dungeon(char *dungeon_name)
     attic->room_down = start;
 
     boiler->room_up = start;
-    boiler->room_right = dungeon;
+    boiler->room_right = dungeon_r;
 
     kitchen->room_left = start;
     kitchen->room_right = living_room;
     kitchen->room_down = garage;
 
-    dungeon->room_left = boiler;
+    dungeon_r->room_left = boiler;
 
     living_room->room_left = kitchen;
     living_room->room_right = bedroom;
@@ -109,4 +109,5 @@ void create_dungeon(char *dungeon_name)
 
     bedroom->room_left = living_room;
 
+    return start;
 }

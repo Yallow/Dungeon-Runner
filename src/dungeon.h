@@ -20,7 +20,7 @@ enum move {
 // dungeon room names
 enum dr_names {
     kitchen,
-    dungeon,
+    the_dungeon,
     attic,
     boiler,
     livingroom,
@@ -70,19 +70,11 @@ typedef struct item {
 } item;
 
 typedef struct dungeon {
-  struct room *starting_zone;
-  struct room *boiler_room;
-  struct room *kitchen;
-  struct room *attic;
-  struct room *dungeon;
-  struct room *living_room;
-  struct room *garage;
-  struct room *bedroom;
-}
-
+  struct room *start;
+} dungeon;
 
 // create a new dungeon (links together dungeon rooms)
-dungeon create_dungeon(char *dungeon_room);
+room *create_dungeon(char *dungeon_room);
 // function to create a new player
 player *create_player(char *name, room *current_room);
 // create a new enemy
@@ -98,7 +90,7 @@ void fight(player *player, enemy *enemy);
 // create a new item to attach to an enemy
 item *create_item(char *item_name, char *item_type, int item_stats);
 // loot item for the enemy (destroys the item on the enemy and recreates the item)
-item *loot_item(char *item_name);
+item *loot_item(char *item_name, char *item_type, int item_stats);
 // destroy player
 void destroy_player(player *player);
 // destroy enemy
