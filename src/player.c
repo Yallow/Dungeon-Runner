@@ -30,7 +30,7 @@ player *create_player(char *name, room *current_room)
   new_player->strength = sword->item_stats;
   new_player->defense = shield->item_stats;
 
-  printf("You are carrying a: %s, with stats of %d and a %s, with stats of %d\n", sword->item_name, sword->item_stats, shield->item_name, shield->stats);
+  printf("You are carrying a: %s, with stats of %d and a %s, with stats of %d\n", sword->item_name, sword->item_stats, shield->item_name, shield->item_stats);
   return new_player;
 }
 
