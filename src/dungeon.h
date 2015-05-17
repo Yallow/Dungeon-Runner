@@ -69,16 +69,12 @@ typedef struct item {
   char *item_type;
 } item;
 
-typedef struct dungeon {
-  struct room *start;
-} dungeon;
-
 // create a new dungeon (links together dungeon rooms)
 room *create_dungeon(char *dungeon_room);
 // function to create a new player
 player *create_player(char *name, room *current_room);
 // create a new enemy
-enemy *create_enemy(char *name);
+enemy *create_enemy(char *name, int enemy_hp, int enemy_str, item *enemy_item);
 // create new rooms
 room *create_room(char *room_name);
 // create a new bag
@@ -91,6 +87,8 @@ void fight(player *player, enemy *enemy);
 item *create_item(char *item_name, char *item_type, int item_stats);
 // loot item for the enemy (destroys the item on the enemy and recreates the item)
 item *loot_item(char *item_name, char *item_type, int item_stats);
+// make all available items
+item *make_items(int item_num);
 // destroy player
 void destroy_player(player *player);
 // destroy enemy
