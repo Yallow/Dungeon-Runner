@@ -17,8 +17,8 @@ enemy *create_enemy(char *name, int enemy_hp, int enemy_str, item *enemy_item)
   new_enemy->enemy_item = enemy_item;
 
   // print statement for debugging
-  printf("A new enemy approaches! %s\n", new_enemy->enemy_name);
-  printf("%s has HP of %d, Strength of: %d, and is has loot of: %s\n", new_enemy->enemy_name, new_enemy->health_points, new_enemy->strength, new_enemy->enemy_item->item_name);
+  //printf("A new enemy approaches! %s\n", new_enemy->enemy_name);
+  //printf("%s has HP of %d, Strength of: %d, and is has loot of: %s\n", new_enemy->enemy_name, new_enemy->health_points, new_enemy->strength, new_enemy->enemy_item->item_name);
 
   return new_enemy;
 }

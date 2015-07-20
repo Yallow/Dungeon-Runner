@@ -20,6 +20,8 @@ int main()
     fgets(player_name, MAX_NAME, stdin);
     // create a new player
     player *player1 = create_player(player_name, dungeon);
+    // start movement
+    player_move(MOVE_LEFT);
 
     return 0;
 }

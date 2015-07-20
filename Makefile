@@ -1,4 +1,5 @@
-CFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFLAGS)
+CC=gcc
+CFLAGS=-g -O2 -Wall -Wextra -Isrc -DNDEBUG $(OPTFLAGS)
 LIBS=-ldl $(OPTLIBS)
 PREFIX?=/usr/local
 
@@ -21,9 +22,11 @@ $(TARGET): build $(OBJECTS)
 	ar rcs $@ $(OBJECTS)
 	ranlib $@
 
-build:
+build:	$(OBJECTS)
 	@mkdir -p build
 	@mkdir -p bin
+	$(CC) -o bin/dungeon_runner $(OBJECTS)
+
 
 # The Unit Tests
 .PHONY: tests

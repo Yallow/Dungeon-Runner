@@ -16,10 +16,7 @@ room *create_room(char *room_name)
   size_t n_bytes = 200; // initial allocation for stdin in this function
   char enemy_name[n_bytes];
 
-  printf("What dwells in the %s?: ", room_name);
-  fgets(enemy_name, n_bytes, stdin);
-  printf("%s dwells in the %s\n", enemy_name, room_name);
-  // create a new enemy for this room
+  // set these as the default. they will change after this function is called
   int def_hp = 20;
   int def_str = 2;
   item *def_item = create_item("Rubber Chicken", "o", 100);

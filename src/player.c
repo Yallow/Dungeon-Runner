@@ -22,7 +22,7 @@ player *create_player(char *name, room *current_room)
   // create a new bag that will be attached to the player
   bag *player_bag = create_bag();
 
-  // create a basic sword and shield for the player
+  // create a basic sword and shield for the player to start with
   item *sword = create_item("Playdoh Hammer", "o", 2);
   item *shield = create_item("T-Shirt Shield", "d", 2);
 
